@@ -1,0 +1,21 @@
+version: '3'
+services:
+  easy-db:
+    image: mongo
+    networks: 
+      - easy-network
+  vuttr-API:
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: .
+    image: paulofs/easy-api
+    container_name: easy-api
+    ports:
+      - "3000:3000"
+    networks: 
+      - easy-network
+    depends_on:
+      - "easy-db"
+networks:
+  easy-network:
+    driver: bridge

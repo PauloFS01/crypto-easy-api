@@ -1,0 +1,75 @@
+FORMAT 1A
+HOST:http://localhost:3000
+
+# VUTTR
+
+ A simple api for vuttr (very userfull tools to remmenber).
+
+# Group tools
+
+## Tools [/tools]
+
+### Adiciona ferramenta [POST]
++ Cadastra nova ferramenta
+    + Headers
+        Accept: application/json
+        Content-Type: application/json        
+    + Attributes (tool)
+
++ Response 200 (application/json)
+    + Attributes (created)
+
+## Tools [/tools]
+
+### Listar todas as ferramentas [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[tool])
+
+
+## Tools [/tools?q=:node]
+
+## Busca por nome descrição ou tag [GET]
++ Parameters
+    + q: "node" (string, required) - string de busca
+
++ Response 201 (application/json)
+    + Attributes (array[tool])
+
+
+## Tools [/tools?tag=tag/tools]
+
+## Busca por tag [GET]
++ Parameters
+    + tag: "node" (string, required) - Tag de busca
+
++ Response 201 (application/json)
+    + Attributes (array[tool])
+
+### Excluir ferramenta [DELETE]
+
+## Por id [/tools/:id]
++ Response 200 (application/json)
+
+
+# Group User
+
+## Tools [/user]
+
+### Adiciona Usuário [POST]
+
++ Cadastra novo usuário     
+
++ Response 200 (application/json)
+
+# Data Structures
+
+## tool (object)
++ title: (string) - Nome da ferramenta
++ link: (string) - Link para site ofical
++ description: (string) - Descrição da ferramenta
++ tags: (array) - Array de tag para busca
+
+
+## created (tool)
++ id: (number) - Id da ferramenta

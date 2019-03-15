@@ -1,0 +1,18 @@
+{
+  "data": {
+    "bpi": {
+      "2018-01-03": 15134.6513,
+      "2018-01-04": 15155.2263,
+      "2018-01-05": 16937.1738,
+      "2018-01-06": 17135.8363,
+      "2018-01-07": 16178.495,
+      "2018-01-08": 14970.3575,
+      "2018-01-09": 14439.4738
+    },
+    "disclaimer": "This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD.",
+    "time": {
+      "updated": "Jan 10, 2018 00:03:00 UTC",
+      "updatedISO": "2018-01-10T00:03:00+00:00"
+    }
+  }
+}

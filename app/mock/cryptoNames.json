@@ -1,0 +1,22 @@
+{
+    "LTC": "Litecoin",
+    "BCH": "Bitcoin Cash",
+    "ETH": "Ethereum",
+    "XRP": "Ripple",
+    "EOS": "EOS",
+    "QTUM": "Qtum",
+    "XLM": "Stellar",
+    "ETC": "Ethereum Classic",
+    "XMR": "Monero",
+    "BTG": "Bitcoin Gold",
+    "TRX": "Tronix",
+    "BNB": "Binance",
+    "DASH":"DiritalCash",
+    "NEO": "NEO",
+    "GAS": "GAS",
+    "ONT": "Ontology",
+    "ZEC": "ZCash",
+    "IOT": "IOTA",
+    "GVT": "Genesis Vision",
+    "DGD": "Digix DAO"
+}

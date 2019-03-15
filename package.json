@@ -1,0 +1,25 @@
+{
+  "name": "vuttr-api",
+  "version": "1.0.0",
+  "description": "a simple repository for managing tools",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "express": "^4.16.4",
+    "express-rate-limit": "^3.4.0",
+    "ioredis": "^4.6.2",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.11",
+    "rate-limit-redis": "^1.6.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PauloFs",
+  "license": "ISC"
+}
