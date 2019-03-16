@@ -1,39 +1,31 @@
 module.exports = function (app) {
 
     let { urlFile, dbHelper } = app.helpers
-    var chart = {};
+    var charts = {};
 
-    chart.blockChainBTC = async (req, res) => {
-        let period = req.period;
+    charts.blockChainBTC = async (req, res) => {
+        let period = req.params.period
         let url = urlFile.blockchainChart(period)
+        if (!url) res.status(400).json(`${period} not fount try a different period`)
         try {
-            let result = await dbHelper.requestCode('blockchainChart', '../mock/bitValorModel.json')
+            let result = await dbHelper.requestCode('blockchainChart', '../mock/blockChain1Mount.json')
             // let result = await requestCode('bitValorTiker', url)
-            if(period) {
-                res.status(200).json(result)
-            } else {
-                res.status(200).json(result)
-            }
+            res.status(200).json(result)
         } catch (error) {
             res.status(500).json(error)
         }
     }
 
-    chart.coindeskBTC = async (req, res) => {
-        let period = req.period;
-        let url = urlFile.blockchainChart(period)
+    charts.coindeskBTC = async (req, res) => {
+        let url = urlFile.coindesckChart()
         try {
-            let result = await dbHelper.requestCode('coindeskBTC', '../mock/bitValorModel.json')
+            let result = await dbHelper.requestCode('coindeskBTC', '../mock/coindeskChart1week.json')
             // let result = await requestCode('bitValorTiker', url)
-            if(period) {
-                res.status(200).json(result)
-            } else {
-                res.status(200).json(result)
-            }
+            res.status(200).json(result)
         } catch (error) {
             res.status(500).json(error)
         }
     }
 
-    return chart;
+    return charts;
 }

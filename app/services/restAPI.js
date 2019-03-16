@@ -1,5 +1,6 @@
 let axios = require('axios')
 module.exports = (app) => {
+
     let restApi = {}
 
     restApi.getTicker = async (url) => {
@@ -11,7 +12,7 @@ module.exports = (app) => {
         }
     }
 
-    restApi.getMocka = async (url) => {
+    restApi.getMocka = async (url) => {       
         try {
             let result = await require(url)
             return result
