@@ -16,3 +16,6 @@ module.exports = function (app) {
     .get(limiter, cryptos.cryptoCompareBTC)
 
 }
+/*
+routes peiods: ticker_24h, ticker_12h, ticker_1h
+*/

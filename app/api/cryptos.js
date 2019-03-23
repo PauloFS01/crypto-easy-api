@@ -1,22 +1,18 @@
-var mongoose = require('mongoose')
-
 module.exports = function (app) {
-    let model = mongoose.model('Crypto')
 
-    let { restAPI } = app.services
-    let { expiredAt, urlFile } = app.helpers    
+    let { urlFile, dbHelper } = app.helpers    
     cryptos = {}
 
     cryptos.bitvalorBTC = async (req, res) => {
         let period = req.params.period
         let url = urlFile.fixed('bitValorTiker')
         try {
-            let result = await requestCode('bitValorTiker', '../mock/bitValorModel.json')
-            // let result = await requestCode('bitValorTiker', url)
+            // let result = await dbHelper.requestCode('bitValorTiker', '../mock/bitValorModel.json')
+            let result = await dbHelper.requestCode('bitValorTiker', url)
             if(period) {
-                res.status(200).json(result[0].ticker.data[period])
+                res.status(200).json(result[0].ticker[period])
             } else {
-                res.status(200).json(result)
+                res.status(200).json(result[0].ticker)
             }
         } catch (error) {
             res.status(500).json(error)
@@ -26,9 +22,9 @@ module.exports = function (app) {
     cryptos.blockchainBTC = async (req, res) => {
         let url = urlFile.fixed('blockchainTicker')
         try {
-            let result = await requestCode('blockchainTicker', '../mock/blockchainTickers.json')
-            // let result = await requestCode('blockchainTicker', url)
-            res.status(200).json(result)          
+            // let result = await dbHelper.requestCode('blockchainTicker', '../mock/blockchainTickers.json')
+            let result = await dbHelper.requestCode('blockchainTicker', url)
+            res.status(200).json(result[0].ticker)          
         } catch (error) {
             res.status(500).json(error)
         }
@@ -37,14 +33,15 @@ module.exports = function (app) {
     cryptos.cryptoCompareBTC = async (req, res) => {
         let url = urlFile.fixed('cryptoCompareTiker')
         try {
-            let result = await requestCode('cryptoCompareTiker', '../mock/cryptoCompare.json')
-            // let result = await requestCode('cryptoCompareTiker', url)
-            res.status(200).json(result)          
+            // let result = await dbHelper.requestCode('cryptoCompareTiker', '../mock/cryptoCompare.json')
+            let result = await dbHelper.requestCode('cryptoCompareTiker', url)
+            res.status(200).json(result[0].ticker)
         } catch (error) {
             res.status(500).json(error)
         }        
-    }    
-
+    }
+    //ToDo test
+/* 
     async function requestCode (key, url) {
         let result = await model.find({ 'key': key })
         if(result.length) {
@@ -91,6 +88,7 @@ module.exports = function (app) {
         )
         return result
     }
+    */
 
     return cryptos;
 }

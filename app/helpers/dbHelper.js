@@ -7,25 +7,22 @@ module.exports = (app) => {
     let dbHelper = {}
 
     dbHelper.requestCode = async (key, url) => {
-        console.log(`key value: ${key} url value ${url}`)
         let result = await model.find({ 'key': key })
         if(result.length) {
-            console.log('data find ' + key)
             if (!expiredAt.ticker(result[0].last)) {
                 return result   
             }
-            let ticker = await restAPI.getMocka(url)
-            // ticker = await restAPI.getTicker(url)
+            // let ticker = await restAPI.getMocka(url)
+            let ticker = await restAPI.getTicker(url)
             let saved = await mongoUpdate(result[0]._id, ticker)
             if (saved.ok) {
-                console.log('data expired')
                 result = await model.find({ 'key': key })
                 return result
             }
         } else {
-            console.log('data not find')
-            let ticker = await restAPI.getMocka(url)
-            // ticker = await restAPI.getTicker(url)
+            console.log('nod find')
+            // let ticker = await restAPI.getMocka(url)
+            ticker = await restAPI.getTicker(url)            
             resultWriter = mongoWriter(key, ticker)
             return resultWriter
         }
@@ -35,8 +32,8 @@ module.exports = (app) => {
         let obj = {}         
         obj.key = key
         obj.last = new Date()
-        obj.ticker = ticker 
-        let result = await model.create(obj)
+        obj.ticker = ticker
+        let result = await model.create(obj)        
         return result
     }
 

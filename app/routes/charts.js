@@ -9,3 +9,7 @@ module.exports = function (app) {
     app.route('/coindeskchart')
     .get(limiter, charts.coindeskBTC)
 }
+
+/* 
+routes period, 1week, 2week, 1months
+*/

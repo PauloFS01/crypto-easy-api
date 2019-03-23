@@ -20,7 +20,6 @@ module.exports = () => {
     ]
 
     url.fixed = (key) => {
-        console.log('test blockchain')
         let result = urlBase.find( elem => elem.name === key).value
         return result
     }
